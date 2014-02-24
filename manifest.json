@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Yomusu",
+  "description": "Find the digital version of books you like.",
+  "version": "0.0.1",
+
+  "background": { "scripts": ["jquery-2.1.0.min.js", "background.js"] },
+
+  "page_action": {
+    "default_icon": "icon-25x25.png",
+  },
+  "permissions": [
+    "tabs","http://*", "https://*"
+  ],
+  "content_script": [{
+    "matches":["http://www.books.com.tw/*"],
+    "js":["jquery-2.1.0.min.js", "content_script.js"]
+  }]
+}
