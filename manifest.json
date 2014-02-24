@@ -8,12 +8,12 @@
   "background": { "scripts": ["jquery-2.1.0.min.js", "background.js"] },
 
   "page_action": {
-    "default_icon": "icon-25x25.png",
+    "default_icon": "icon-25x25.png"
   },
   "permissions": [
-    "tabs","http://*", "https://*"
+    "tabs","https://askus.github.io/*", "http://askus.github.io/*"
   ],
-  "content_script": [{
+  "content_scripts": [{
     "matches":["http://www.books.com.tw/*"],
     "js":["jquery-2.1.0.min.js", "content_script.js"]
   }]

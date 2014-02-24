@@ -4,12 +4,26 @@ if( book_name.length <= 0 ){
 }else{
 	var msg = {
 		type: "books-article-information",
-		name : book_name.first.text(),
+		name : book_name.first().text(),
 		prize : $("strong.price01 b").text(),
-		author : $("div.type02_p003 ul li a").first.text(), 
+		author : $("div.type02_p003 ul li a").first().text(), 
 		url: document.URL
 	}	
 	chrome.runtime.sendMessage(msg);
 }
 
-$.getJSON()
+var be_url = "http://askus.github.io/yomusu/data/readmoo.com.sample1.json";
+var data = {"url": document.URL };
+
+
+$.getJSON( be_url,data ).done(function(msgs ){
+		var text = '<div class="e-book">'; 
+		for( var i =0; i < msgs.data.length ; i++  ){
+			var data = msgs.data[i]; 
+			text += '<p><a href="'+data.link+'">' + data.source + ":"+ data.prize+ '元</a></p>';
+		}
+		text += '</div>';
+		$("div.transport_info").append( text );
+	}).fail(function(jqXHR, textStatus) {
+			console.log( textStatus);
+	});
