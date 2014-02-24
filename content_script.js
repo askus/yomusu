@@ -16,7 +16,8 @@ var be_url = "http://askus.github.io/yomusu/data/readmoo.com.sample1.json";
 var data = {"url": document.URL };
 
 
-$.getJSON( be_url,data ).done(function(msgs ){
+$.getJSON( be_url,data ).done(function( msgs ){
+		console.log( msgs);
 		var text = '<div class="e-book">'; 
 		for( var i =0; i < msgs.data.length ; i++  ){
 			var data = msgs.data[i]; 
@@ -24,6 +25,5 @@ $.getJSON( be_url,data ).done(function(msgs ){
 		}
 		text += '</div>';
 		$("div.transport_info").append( text );
-	}).fail(function(jqXHR, textStatus) {
-			console.log( textStatus);
-	});
+	})
+;
